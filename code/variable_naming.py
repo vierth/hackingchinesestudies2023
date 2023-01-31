@@ -20,7 +20,3 @@ currentyear = 2023
 # please never do this
 str = "friend"
 int = 52
-
-
-print(a)
-print(a, b, c)
