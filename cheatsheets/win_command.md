@@ -1,20 +1,20 @@
+## print working directory
 cd  
-prints working directory
 
+## list folder contents
 dir 
-lists contents
 
+## clear screen
 cls 
-clear the screen
 
+## change directory into folder called "path"
 cd path 
-changes directory into folder called path
 
+## go up one level in folder hierarchy
 cd ..
-go up one level in file hierarchy
 
+## go to root folder
 cd \
-go to root
 
+## make a folder called "code"
 mkdir code
-makes a folder called code
