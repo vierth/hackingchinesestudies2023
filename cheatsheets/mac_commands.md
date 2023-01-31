@@ -1,20 +1,20 @@
+## print workign directory
 pwd 
-prints workign directory
 
+## list contents
 ls  
-list contents
 
+## clear scren
 clear   
-cleear the screen
 
+## change directory to folder called "path"
 cd path 
-changes directory into folder called path
 
+## go up one level in folder hierarchy
 cd ..
-go up one level in file hierarchy
 
+## go to computer root
 cd /
-go to root
 
+## make a folder called "code"
 mkdir code
-makes a folder called code
