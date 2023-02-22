@@ -21,6 +21,7 @@ for word in unique_words:
 sorted_word_counter = sorted(word_counter, key=word_counter.get, reverse=True)    
 
 # lets print words in order with their frequency
-for word in sorted_word_counter:
+for word in sorted_word_counter[0:10]:
     print(word, word_counter[word])
 
+print(sorted_word_counter[:10])
