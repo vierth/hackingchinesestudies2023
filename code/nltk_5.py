@@ -1,5 +1,6 @@
 import nltk
 import matplotlib.pyplot as plt
+
 # open the analects
 with open("analects.txt", 'r', encoding='utf8') as rf:
     analects = rf.read()
@@ -32,7 +33,9 @@ analects_text.similar('government')
 # make a lexical dispersion plt
 # give it a list of words, and see where they occur iwthin the text
 analects_text.dispersion_plot(["rites", "ritual", "government"])
+
 plt.show()
+
 # getting collocations
 analects_text.collocations()
 
