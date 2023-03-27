@@ -3,7 +3,7 @@ import re, os
 with open('analects.txt','r', encoding='utf8') as rf:
     text = rf.read()
 
-text = re.sub(r"\n", '', text)
+text = re.sub(r"\n", ' ', text)
 text = re.sub(r"\s+", " ", text)
 chapters = re.split(r'CHAP\. [IVXCL]+\.', text)
 chapters = [c.strip() for c in chapters]
