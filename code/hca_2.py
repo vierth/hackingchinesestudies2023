@@ -19,6 +19,9 @@ def chunk(text, length=10000):
     loops = len(text)//length
     return [text[i*length:(i+1)*length] for i in range(loops)]
 
+def div_chapter(text):
+    return re.split(r'第[一二三四五六七八九十百]+回', text)
+
 ignore_files = set(["LICENSE.txt", ".DS_Store",".git_ignore"])
 
 titles = []
@@ -29,7 +32,7 @@ for root, dirs, files in os.walk('novels'):
         with open(os.path.join(root, f),'r', encoding='utf8') as rf:
             text = rf.read()
         text = clean(text)
-        chunks = chunk(text)
+        chunks = div_chapter(text)
         print(len(chunks))
         texts.extend(chunks)
         chunk_titles = [f[:-4] for i in range(len(chunks))]
