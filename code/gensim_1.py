@@ -1,4 +1,10 @@
 import gensim, nltk, os
+import plotly.express as px
+import pandas as pd
+import numpy as np
+
+import logging
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 titles = []
 texts = []
@@ -36,3 +42,35 @@ lda = gensim.models.ldamodel.LdaModel(
 topics = lda.show_topics()
 for topic in topics:
     print(topic)
+
+def plot_topic(topic_num, topn=20):
+    topic_data = {"words":[], "weights":[]}
+
+    for word, weight in lda.show_topic(topic_num, topn=topn):
+        topic_data["words"].append(word)
+        topic_data["weights"].append(weight)
+
+    df = pd.DataFrame(topic_data)
+
+    fig = px.bar(df, x="words", y="weights")
+    fig.show()
+
+plot_topic(8, topn=15)
+
+
+doc_lda = lda.get_document_topics(processed_corpus[0], minimum_probability=0.0)
+doc_data = {"topic_num":[d[0] for d in doc_lda], "topic_weight":[d[1] for d in doc_lda]}
+doc_df = pd.DataFrame(doc_data)
+fig = px.bar(doc_df, x="topic_num", y="topic_weight")
+fig.show()
+
+
+# look at topic prevelance across full corpus
+# get all topics
+all_doc_topics = [lda.get_document_topics(processed_corpus[i],minimum_probability=0.0) for i in range(len(processed_corpus))]
+
+corpus_lda = np.sum(np.array(all_doc_topics), axis=1)
+corpus_data = {"topic_num":[i for i in range(10)], "topic_weight":corpus_lda}
+corpus_df = pd.DataFrame(corpus_data)
+fig = px.bar(corpus_df, x="topic_num", y="topic_weight")
+fig.show()
