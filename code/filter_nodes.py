@@ -2,6 +2,7 @@ import time
 with open('edges.tsv', 'r', encoding='utf8') as rf:
     edge_data = rf.read().split("\n")
     header= edge_data[0]
+    header = "Source	Target	Birth	Death	Index	Kin	Gender"
     edge_data = edge_data[1:]
     edge_data = [d.split("\t") for d in edge_data]
     
